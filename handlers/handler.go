@@ -38,8 +38,9 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 		serverFallback(w)
 	}
 	defer imgResp.Body.Close()
+
 	fmt.Println(imgResp.Header.Get("Content-Type"))
-	w.Header().Set("Content-Type", imgResp.Header.Get("Content-Type"))
+	w.Header().Set("Content-Type", "image/jpeg")
 	w.WriteHeader(http.StatusOK)
 
 	_, err = io.Copy(w, imgResp.Body)
