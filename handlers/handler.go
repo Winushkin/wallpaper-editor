@@ -1,4 +1,4 @@
-package main
+package handlers
 
 import (
 	"encoding/json"
@@ -7,6 +7,11 @@ import (
 	"net/http"
 	"os"
 )
+
+type randomResp struct {
+	Message string `json:"message"`
+	Status  string `json:"status"`
+}
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Начало запроса")

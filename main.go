@@ -3,16 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"wp-editor/handlers"
 )
-
-type randomResp struct {
-	Message string `json:"message"`
-	Status  string `json:"status"`
-}
 
 func main() {
 
-	http.HandleFunc("/", MainHandler)
+	http.HandleFunc("/", handlers.MainHandler)
 
 	fmt.Println("server is started on :8080")
 
