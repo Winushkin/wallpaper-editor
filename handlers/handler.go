@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io"
 	"net/http"
 	"os"
@@ -13,7 +14,16 @@ type randomResp struct {
 	Status  string `json:"status"`
 }
 
-func MainHandler(w http.ResponseWriter, r *http.Request) {
+var tmp = template.Must(template.ParseFiles("templates/index.html"))
+
+func MainHandler(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	_ = tmp.Execute(w, map[string]any{
+		"Title": "Собачки!!!",
+	})
+}
+
+func DogsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Начало запроса")
 	resp, err := http.Get("https://dog.ceo/api/breeds/image/random")
 	if err != nil {
