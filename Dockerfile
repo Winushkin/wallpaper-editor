@@ -6,7 +6,7 @@ RUN go build -o dog-server
 FROM alpine
 WORKDIR /app
 COPY --from=build /app/dog-server .
-COPY --from=build /app/static .
-COPY --from=build /app/templates .
+COPY --from=build /app/static ./static
+COPY --from=build /app/templates ./templates
 EXPOSE 8080
 CMD ["./dog-server"]
