@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"wp-editor/handlers"
+	"wp-editor/internal/handlers"
 )
 
 func main() {
